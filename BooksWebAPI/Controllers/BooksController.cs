@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BooksWebAPI_DAL.Entities;
 
 namespace BooksWebAPI.Controllers
 {
@@ -23,15 +24,15 @@ namespace BooksWebAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Book> GetAllBooks()
+        public async Task<IEnumerable<Book>> GetAllBooks()
         {
-            return _booksService.GetAllBooks();
+            return  await _booksService.GetAllBooks();
         }
 
         [HttpGet("{id}")]
-        public Book GetBookById(Guid id)
+        public async Task<Book> GetBookById(Guid id)
         {
-            return _booksService.GetBookById(id);
+            return await _booksService.GetBookById(id);
         }
 
         [HttpPost]
@@ -51,16 +52,19 @@ namespace BooksWebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public bool UpdateBook(Guid id, Book book)
+        public async Task<IActionResult> UpdateBook(Guid id, Book book)
         {
             book.Id = id;
-            return _booksService.UpdateBook(book);
+
+            var result = await _booksService.UpdateBook(book);
+
+            return result ? StatusCode(200) : StatusCode(400);
         }
 
         [HttpDelete("{id}")]
-        public bool DeleteBook(Guid id)
+        public async Task<bool> DeleteBook(Guid id)
         { 
-            return _booksService.DeleteBookById(id);
+            return await _booksService.DeleteBookById(id);
         }
     }
 }

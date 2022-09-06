@@ -1,4 +1,5 @@
 ﻿using BooksWebAPI_DAL;
+using BooksWebAPI_DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,40 +10,40 @@ namespace BooksWebAPI_BL
 {
     public class BooksService : IBooksService
     {
-        private readonly IBooksRepository _booksRepository;
+        private readonly IGenericRepository<Book> _booksRepository;
 
-        public BooksService(IBooksRepository booksRepository)
+        public BooksService(IGenericRepository<Book> booksRepository)
         {
             _booksRepository = booksRepository;
         }
 
-        public Guid AddBook(Book book)
+        public async Task<Guid> AddBook(Book book)
         {
             ValidateBookState(book);
 
-            return _booksRepository.Add(book);
+            return await _booksRepository.Add(book);
         }
 
-        public bool DeleteBookById(Guid id)
+        public async Task<bool> DeleteBookById(Guid id)
         {
-            return _booksRepository.DeleteById(id);
+            return await _booksRepository.DeleteById(id);
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public async Task<IEnumerable<Book>> GetAllBooks()
         {
-            return _booksRepository.GetAll();
+            return await _booksRepository.GetAll();
         }
 
-        public Book GetBookById(Guid id)
+        public async Task<Book> GetBookById(Guid id)
         {
-            return _booksRepository.GetById(id);
+            return await _booksRepository.GetById(id);
         }
 
-        public bool UpdateBook(Book book)
+        public async Task<bool> UpdateBook(Book book)
         {
             ValidateBookState(book);
 
-            return _booksRepository.Update(book);
+            return await _booksRepository.Update(book);
         }
 
         private void ValidateBookState(Book book)

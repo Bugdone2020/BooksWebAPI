@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using BooksWebAPI_DAL.Entities;
 
 namespace BooksWebAPI_DAL
 {

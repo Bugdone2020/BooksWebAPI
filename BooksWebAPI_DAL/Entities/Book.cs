@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BooksWebAPI_DAL
+namespace BooksWebAPI_DAL.Entities
 {
-    public class Book
+    public class Book : BaseEntity
     {
-        public Guid Id { get; set; }
         [Required]
         [MinLength(3)]
         [MaxLength(30)]
