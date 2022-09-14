@@ -1,5 +1,4 @@
 using BooksWebAPI_DAL;
-using BooksWebAPI_DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,7 +33,7 @@ namespace BooksWebAPI
                 ( typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IBooksService, BooksService>();
             services.AddDbContext<EFCoreDbContext>(options =>
-               options.UseSqlServer(Configuration["ConnectionStrings:Default"]));
+               options.UseSqlServer("name=ConnectionStrings:Default"));//(Configuration["ConnectionStrings:Default"])
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

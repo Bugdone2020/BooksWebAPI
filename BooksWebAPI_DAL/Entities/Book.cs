@@ -13,6 +13,5 @@ namespace BooksWebAPI_DAL.Entities
         [MinLength(2)]
         [MaxLength(40)]
         public string Author { get; set; }
-        public int PagesCount { get; set; }
     }
 }

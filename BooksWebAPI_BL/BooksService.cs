@@ -19,8 +19,6 @@ namespace BooksWebAPI_BL
 
         public async Task<Guid> AddBook(Book book)
         {
-            ValidateBookState(book);
-
             return await _booksRepository.Add(book);
         }
 
@@ -41,18 +39,7 @@ namespace BooksWebAPI_BL
 
         public async Task<bool> UpdateBook(Book book)
         {
-            ValidateBookState(book);
-
             return await _booksRepository.Update(book);
         }
-
-        private void ValidateBookState(Book book)
-        {
-            if (book.PagesCount < 10 || book.PagesCount > 2000)
-            {
-                throw new ArgumentException("Invalid pages count!");
-            }
-        }
-        
     }
 }
