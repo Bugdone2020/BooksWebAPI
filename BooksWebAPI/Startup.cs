@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BooksWebAPI_BL;
+using BooksWebAPI_BL.Services.BookService;
 
 namespace BooksWebAPI
 {
@@ -32,6 +33,7 @@ namespace BooksWebAPI
             services.AddScoped
                 ( typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IBooksService, BooksService>();
+            services.AddScoped<IBooksRepository, BooksRepository>();
             services.AddDbContext<EFCoreDbContext>(options =>
                options.UseSqlServer("name=ConnectionStrings:Default"));//(Configuration["ConnectionStrings:Default"])
 
