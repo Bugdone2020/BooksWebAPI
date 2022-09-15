@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BooksWebAPI_DAL.Entities;
+using BooksWebAPI_BL.Services.BookService;
+using BooksWebAPI_BL.DTOs;
 
 namespace BooksWebAPI.Controllers
 {
@@ -33,6 +35,12 @@ namespace BooksWebAPI.Controllers
         public async Task<Book> GetBookById(Guid id)
         {
             return await _booksService.GetBookById(id);
+        }
+
+        [HttpGet("full/{id}")]
+        public async Task<BookDto> GetFullInfoById(Guid id)
+        {
+            return await _booksService.GetBookFullInfo(id);
         }
 
         [HttpPost]
