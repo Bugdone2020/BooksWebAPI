@@ -11,7 +11,7 @@ namespace BooksWebAPI_DAL.Entities
     {
         [ForeignKey("Client")]
         public Guid ClientId { get; set; }
-        public Client Client { get; set; }
+        public User Client { get; set; }
 
         [ForeignKey("LibraryBook")]
         public Guid LibraryBookId { get; set; }
