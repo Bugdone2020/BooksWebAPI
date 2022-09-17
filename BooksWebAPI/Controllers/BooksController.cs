@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using BooksWebAPI_DAL.Entities;
 using BooksWebAPI_BL.Services.BookService;
@@ -25,8 +24,8 @@ namespace BooksWebAPI.Controllers
             _booksService = booksService;
             _logger = logger;
         }
-
-        [Authorize(Roles = BooksWebAPI_BL.Roles.Reader)]
+        
+        [Authorize(Roles = Roles.Reader)]
         [HttpGet]
         public async Task<IEnumerable<Book>> GetAllBooks()
         {
