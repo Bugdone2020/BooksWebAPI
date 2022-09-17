@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,5 +16,6 @@ namespace BooksWebAPI_DAL
         Task<bool> DeleteById(Guid id);
         Task<bool> Update(T book);
         Task<Guid> Add(T book);
+        Task<T> GetByPredicate(Expression<Func<T, bool>> predicate);
     }
 }

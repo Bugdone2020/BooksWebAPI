@@ -56,7 +56,6 @@ namespace BooksWebAPI_BL.Services.BookService
 
         private BookDto MapTupleToBookDto((Book book, IEnumerable<BookRevision> bookRevisions) result)
         {
-            int i = 0;
             return new BookDto
             {
                 Author = result.book?.Author,

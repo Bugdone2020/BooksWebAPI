@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using BooksWebAPI_DAL.Entities;
 using BooksWebAPI_BL.Services.BookService;
 using BooksWebAPI_BL.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BooksWebAPI.Controllers
 {
@@ -25,6 +26,7 @@ namespace BooksWebAPI.Controllers
             _logger = logger;
         }
 
+        [Authorize(Roles = BooksWebAPI_BL.Roles.Reader)]
         [HttpGet]
         public async Task<IEnumerable<Book>> GetAllBooks()
         {
