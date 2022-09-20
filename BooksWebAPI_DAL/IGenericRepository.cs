@@ -17,5 +17,6 @@ namespace BooksWebAPI_DAL
         Task<bool> Update(T book);
         Task<Guid> Add(T book);
         Task<T> GetByPredicate(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> GetAllByPredicate(Expression<Func<T, bool>> predicate);
     }
 }
