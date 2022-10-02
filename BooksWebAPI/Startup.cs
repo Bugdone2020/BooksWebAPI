@@ -128,6 +128,8 @@ namespace BooksWebAPI
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BooksWebAPI v1"));
             }
 
+            
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -135,6 +137,8 @@ namespace BooksWebAPI
             app.UseAuthentication(); // add authentication middleware
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
