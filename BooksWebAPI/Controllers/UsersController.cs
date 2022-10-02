@@ -23,6 +23,12 @@ namespace BooksWebAPI.Controllers
             _logger = logger;
         }
 
+        [HttpGet("confirm")]
+        public async Task<IActionResult> ConfirmUserMail(string email)
+        {
+            return Ok(await _authService.ConfirmUserMail(email));
+        }
+
         [HttpGet]
         public async Task<IActionResult> SignIn(string login, string password)
         {
